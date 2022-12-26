@@ -1,22 +1,15 @@
 package com.example.recipes1.controllers.model;
-
-import lombok.AllArgsConstructor;
-import lombok.Data;
-
-import java.util.ArrayList;
-import java.util.Objects;
-import java.util.Set;
-import java.util.TreeSet;
+import java.util.*;
 
 
 public class Recipe {
     private final String nameOfTheRecipe;
     private final int cookingTime;
-    private ArrayList<Ingredient> listOfIngredients = new ArrayList<>();
-    private Set<String> cookingSteps = new TreeSet<>();
+    private List<Ingredient> listOfIngredients;
+    private List<String> cookingSteps;
     private int id;
 
-    public Recipe(String nameOfTheRecipe, int cookingTime, ArrayList<Ingredient> listOfIngredients, Set<String> cookingSteps, int id) {
+    public Recipe(String nameOfTheRecipe, int cookingTime, List<Ingredient> listOfIngredients, List<String> cookingSteps, int id) {
         this.nameOfTheRecipe = nameOfTheRecipe;
         this.cookingTime = cookingTime;
         this.listOfIngredients = listOfIngredients;
@@ -33,19 +26,23 @@ public class Recipe {
     }
 
     public ArrayList<Ingredient> getListOfIngredients() {
-        return listOfIngredients;
+        return (ArrayList<Ingredient>) listOfIngredients;
     }
 
     public void setListOfIngredients(ArrayList<Ingredient> listOfIngredients) {
         this.listOfIngredients = listOfIngredients;
     }
 
-    public Set<String> getCookingSteps() {
-        return cookingSteps;
+    public void setListOfIngredients(List<Ingredient> listOfIngredients) {
+        this.listOfIngredients = listOfIngredients;
     }
 
-    public void setCookingSteps(Set<String> cookingSteps) {
+    public void setCookingSteps(List<String> cookingSteps) {
         this.cookingSteps = cookingSteps;
+    }
+
+    public List<String> getCookingSteps() {
+        return cookingSteps;
     }
 
     public int getId() {

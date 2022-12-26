@@ -1,11 +1,5 @@
 package com.example.recipes1.controllers.model;
-
-import lombok.AllArgsConstructor;
-import lombok.Data;
-
 import java.util.Objects;
-
-@AllArgsConstructor
 
 public class Ingredient {
     private final String nameOfTheIngredient;

@@ -7,10 +7,11 @@ import java.util.*;
 
 @Service
 public class RecipeService {
-    private final Map<String, Recipe> recipes = new TreeMap<>();
+    private final Map<Long, Recipe> recipes = new HashMap<Long, Recipe>();
+    private Long counter = 0L;
 
     public Recipe addRecipe(Recipe recipe){
-        recipes.put(recipe.getNameOfTheRecipe(),recipe);
+        recipes.put(this.counter++, recipe);
         return recipe;
     }
 

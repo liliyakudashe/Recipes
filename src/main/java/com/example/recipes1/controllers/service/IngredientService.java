@@ -1,7 +1,5 @@
 package com.example.recipes1.controllers.service;
-
 import com.example.recipes1.controllers.model.Ingredient;
-import com.example.recipes1.controllers.model.Recipe;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
