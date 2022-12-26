@@ -1,7 +1,6 @@
 package com.example.recipes1.controllers.model;
 import java.util.*;
 
-
 public class Recipe {
     private final String nameOfTheRecipe;
     private final int cookingTime;

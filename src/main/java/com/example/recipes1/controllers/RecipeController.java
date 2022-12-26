@@ -2,7 +2,6 @@ package com.example.recipes1.controllers;
 import com.example.recipes1.controllers.model.Recipe;
 import com.example.recipes1.controllers.service.RecipeService;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.Collection;
 
 @RestController

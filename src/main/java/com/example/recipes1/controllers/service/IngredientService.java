@@ -1,7 +1,6 @@
 package com.example.recipes1.controllers.service;
 import com.example.recipes1.controllers.model.Ingredient;
 import org.springframework.stereotype.Service;
-
 import java.util.Collection;
 import java.util.Map;
 import java.util.TreeMap;

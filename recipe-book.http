@@ -314,6 +314,5 @@ Content-Type: application/json
     }
   ]
 }
-
 ### Удаление рецепта
 DELETE http://localhost:8080/recipe/

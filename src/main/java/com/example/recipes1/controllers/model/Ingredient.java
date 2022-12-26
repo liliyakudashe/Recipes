@@ -11,7 +11,6 @@ public class Ingredient {
         this.numberOfIngredients = numberOfIngredients;
         this.unitOfMeasurement = unitOfMeasurement;
     }
-
     public String getNameOfTheIngredient() {
         return nameOfTheIngredient;
     }
