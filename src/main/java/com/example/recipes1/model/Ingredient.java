@@ -1,4 +1,4 @@
-package com.example.recipes1.controllers.model;
+package com.example.recipes1.model;
 import java.util.Objects;
 
 public class Ingredient {

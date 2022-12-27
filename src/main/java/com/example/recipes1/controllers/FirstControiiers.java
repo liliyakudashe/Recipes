@@ -1,7 +1,7 @@
 package com.example.recipes1.controllers;
 
-import com.example.recipes1.controllers.model.Ingredient;
-import com.example.recipes1.controllers.service.IngredientService;
+import com.example.recipes1.model.Ingredient;
+import com.example.recipes1.service.IngredientService;
 import org.springframework.web.bind.annotation.*;
 import java.util.Collection;
 
