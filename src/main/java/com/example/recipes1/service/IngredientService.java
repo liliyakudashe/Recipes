@@ -1,21 +1,28 @@
 package com.example.recipes1.service;
 import com.example.recipes1.model.Ingredient;
+import com.example.recipes1.model.Recipe;
 import org.springframework.stereotype.Service;
-import java.util.Collection;
-import java.util.Map;
-import java.util.TreeMap;
+
+import java.util.*;
 
 @Service
 public class IngredientService {
 
     private final Map<String, Ingredient> ingredients = new TreeMap<>();
 
-    public Ingredient addIngredient(Ingredient ingredient){
+    public Ingredient add(Ingredient ingredient){
         ingredients.put(ingredient.getNameOfTheIngredient(),ingredient);
         return ingredient;
     }
 
-    public Ingredient updateIngredient (String id, Ingredient ingredient){
+    public Ingredient get(long id){
+        if (ingredients.containsKey(id)){
+            return ingredients.get(id);
+        } else {
+            throw new RuntimeException();
+        }
+    }
+    public Ingredient update (String id, Ingredient ingredient){
         Ingredient serviceIngredient = ingredients.get(id);
         if (serviceIngredient == null){
             throw new RuntimeException("Такого рецепта нет");
@@ -23,12 +30,12 @@ public class IngredientService {
         return serviceIngredient;
     }
 
-    public Ingredient removeIngredient(String id){
+    public Ingredient remove(String id){
         return ingredients.remove(id);
     }
 
-    public Collection<Ingredient> getAll(){
-        return ingredients.values();
+    public List<Ingredient> getAll(){
+        return new ArrayList<>();
     }
 
 }

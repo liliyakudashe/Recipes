@@ -9,12 +9,12 @@ public class RecipeService {
     private final Map<Long, Recipe> recipes = new HashMap<Long, Recipe>();
     private Long counter = 0L;
 
-    public Recipe addRecipe(Recipe recipe){
+    public Recipe add(Recipe recipe){
         recipes.put(this.counter++, recipe);
         return recipe;
     }
 
-    public Recipe getReceiving(String id){
+    public Recipe get(long id){
         if (recipes.containsKey(id)){
             return recipes.get(id);
         } else {
@@ -22,7 +22,7 @@ public class RecipeService {
         }
     }
 
-    public Recipe updateRecipe (String id, Recipe recipe){
+    public Recipe update (long id, Recipe recipe){
         Recipe serviceRecipe = recipes.get(id);
         if (serviceRecipe == null){
             throw new RuntimeException("Такого рецепта нет");
@@ -32,11 +32,11 @@ public class RecipeService {
         return serviceRecipe;
     }
 
-    public Recipe removeRecipe(String id){
+    public Recipe remove(long id){
         return recipes.remove(id);
     }
 
-    public Collection<Recipe> getAll(){
-        return recipes.values();
+    public List<Recipe> getAll(){
+        return new ArrayList<>();
     }
 }
