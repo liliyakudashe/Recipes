@@ -1,6 +1,13 @@
 package com.example.recipes1.controllers;
 import com.example.recipes1.model.Recipe;
 import com.example.recipes1.service.RecipeService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.ArraySchema;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -9,6 +16,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/recipe")
+@Tag(name = "Рецепты", description = "CRUD и другие эндпоинты")
 public class RecipeController {
     private final RecipeService recipeService;
 
@@ -16,6 +24,8 @@ public class RecipeController {
         this.recipeService = recipeService;
     }
 
+    @Operation(summary = "Поиск рецепта",description = "Нужно искать рецепт по ID")
+    @ApiResponses(value = {@ApiResponse(responseCode = "200",description = "Рецепт найден", content = {@Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = Recipe.class)))})})
     @GetMapping("/{id}")
     public Recipe getRecipe(@PathVariable("id") long id){
         return recipeService.get(id);
