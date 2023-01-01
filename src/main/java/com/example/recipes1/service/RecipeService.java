@@ -1,5 +1,10 @@
 package com.example.recipes1.service;
+import com.example.recipes1.model.Ingredient;
 import com.example.recipes1.model.Recipe;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import jakarta.annotation.PostConstruct;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -8,9 +13,17 @@ import java.util.*;
 public class RecipeService {
     private final Map<Long, Recipe> recipes = new HashMap<Long, Recipe>();
     private Long counter = 0L;
+    
+    final private FilesService filesService;
+
+    public RecipeService(FilesService filesService) {
+        this.filesService = filesService;
+    }
+
 
     public Recipe add(Recipe recipe){
         recipes.put(this.counter++, recipe);
+        saveToFile();
         return recipe;
     }
 
@@ -38,5 +51,28 @@ public class RecipeService {
 
     public List<Recipe> getAll(){
         return new ArrayList<>();
+    }
+
+    private void saveToFile(){
+        try {
+           String json = new ObjectMapper().writeValueAsString(recipes);
+           filesService.saveToFile(json);
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @PostConstruct
+    private void init(){
+        readFromm();
+    }
+    private void readFromm(){
+       String json = filesService.readFromFile();
+        try {
+            new ObjectMapper().readValue(json, new TypeReference<TreeMap<Ingredient, Recipe>>() {
+            });
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
