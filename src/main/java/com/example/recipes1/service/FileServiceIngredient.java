@@ -1,13 +1,12 @@
 package com.example.recipes1.service;
 
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Service;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
-@Service
-public class FilesService {
+public class FileServiceIngredient implements FileServiceInterfaceIngredient{
 
     @Value("${path.to.data.file}")
     private String dataFilePath;
@@ -15,7 +14,9 @@ public class FilesService {
     @Value("${name.of.data.file}")
     private String dataFileName;
 
-    public boolean saveToFile(String json){
+
+    @Override
+    public boolean saveToFile(String json) {
         try {
             cleanDataFile();
             Files.writeString(Path.of(dataFilePath, dataFileName), json);
@@ -25,15 +26,18 @@ public class FilesService {
         }
     }
 
-    public String readFromFile(){
+
+
+    @Override
+    public String readFromFile() {
         try {
-           return Files.readString(Path.of(dataFilePath, dataFileName));
+            return Files.readString(Path.of(dataFilePath, dataFileName));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
 
-    private boolean cleanDataFile(){
+    private boolean cleanDataFile() {
         try {
             Files.deleteIfExists(Path.of(dataFilePath, dataFileName));
             Files.createFile(Path.of(dataFilePath, dataFileName));

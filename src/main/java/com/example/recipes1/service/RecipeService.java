@@ -10,14 +10,14 @@ import org.springframework.stereotype.Service;
 import java.util.*;
 
 @Service
-public class RecipeService {
+public class RecipeService implements RecipeServiceInterface {
     private final Map<Long, Recipe> recipes = new HashMap<Long, Recipe>();
     private Long counter = 0L;
     
-    final private FilesService filesService;
+    final private FilesServiceRecipe filesServiceRecipe;
 
-    public RecipeService(FilesService filesService) {
-        this.filesService = filesService;
+    public RecipeService(FilesServiceRecipe filesServiceRecipe) {
+        this.filesServiceRecipe = filesServiceRecipe;
     }
 
 
@@ -56,7 +56,7 @@ public class RecipeService {
     private void saveToFile(){
         try {
            String json = new ObjectMapper().writeValueAsString(recipes);
-           filesService.saveToFile(json);
+           filesServiceRecipe.saveToFile(json);
         } catch (JsonProcessingException e) {
             throw new RuntimeException(e);
         }
@@ -67,7 +67,7 @@ public class RecipeService {
         readFromm();
     }
     private void readFromm(){
-       String json = filesService.readFromFile();
+       String json = filesServiceRecipe.readFromFile();
         try {
             new ObjectMapper().readValue(json, new TypeReference<TreeMap<Ingredient, Recipe>>() {
             });
