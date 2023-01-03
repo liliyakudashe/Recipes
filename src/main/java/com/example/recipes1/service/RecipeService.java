@@ -1,4 +1,5 @@
 package com.example.recipes1.service;
+import com.example.recipes1.exception.RecipeNotFoundException;
 import com.example.recipes1.model.Ingredient;
 import com.example.recipes1.model.Recipe;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -31,14 +32,14 @@ public class RecipeService implements RecipeServiceInterface {
         if (recipes.containsKey(id)){
             return recipes.get(id);
         } else {
-            throw new RuntimeException();
+            throw new RecipeNotFoundException(id);
         }
     }
 
     public Recipe update (long id, Recipe recipe){
         Recipe serviceRecipe = recipes.get(id);
         if (serviceRecipe == null){
-            throw new RuntimeException("Такого рецепта нет");
+            throw new RecipeNotFoundException(id);
         }
         serviceRecipe.setCookingSteps(recipe.getCookingSteps());
         serviceRecipe.setListOfIngredients(recipe.getListOfIngredients());

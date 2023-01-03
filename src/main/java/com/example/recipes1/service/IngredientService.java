@@ -1,4 +1,5 @@
 package com.example.recipes1.service;
+import com.example.recipes1.exception.IngredientNotFoundException;
 import com.example.recipes1.model.Ingredient;
 import com.example.recipes1.model.Recipe;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -29,13 +30,13 @@ public class IngredientService implements IngredientServiceInterface {
         if (ingredients.containsKey(id)){
             return ingredients.get(id);
         } else {
-            throw new RuntimeException();
+            throw new IngredientNotFoundException(id);
         }
     }
-    public Ingredient update (String id, Ingredient ingredient){
+    public Ingredient update (long id, Ingredient ingredient){
         Ingredient serviceIngredient = ingredients.get(id);
         if (serviceIngredient == null){
-            throw new RuntimeException("Такого инредиента нет");
+            throw new IngredientNotFoundException(id);
         }
         return serviceIngredient;
     }

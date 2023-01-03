@@ -10,7 +10,7 @@ public interface IngredientServiceInterface {
 
     Ingredient get(long id);
 
-    Ingredient update (String id, Ingredient ingredient);
+    Ingredient update (long id, Ingredient ingredient);
 
     Ingredient remove(String id);
 

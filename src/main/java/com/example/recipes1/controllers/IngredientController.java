@@ -32,7 +32,7 @@ public class IngredientController {
     }
 
     @PatchMapping("/{id}")
-    public Ingredient update(@PathVariable("id") String id, @RequestBody Ingredient ingredient){
+    public Ingredient update(@PathVariable("id") long id, @RequestBody Ingredient ingredient){
         return this.ingredientService.update(id, ingredient);
     }
 
