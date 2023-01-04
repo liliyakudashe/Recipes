@@ -8,9 +8,9 @@ public interface IngredientServiceInterface {
 
     Ingredient add(Ingredient ingredient);
 
-    Ingredient get(long id);
+    Ingredient get(String id);
 
-    Ingredient update (long id, Ingredient ingredient);
+    Ingredient update (String id, Ingredient ingredient);
 
     Ingredient remove(String id);
 

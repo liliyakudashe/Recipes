@@ -15,10 +15,10 @@ public class IngredientService implements IngredientServiceInterface {
 
     private final Map<String, Ingredient> ingredients = new TreeMap<>();
 
-    final private FilesServiceRecipe filesService;
+    final private FileServiceIngredient fileServiceIngredient;
 
-    public IngredientService(FilesServiceRecipe filesServiceRecipe) {
-        this.filesService = filesServiceRecipe;
+    public IngredientService(FileServiceIngredient fileServiceIngredient) {
+        this.fileServiceIngredient = fileServiceIngredient;
     }
 
     public Ingredient add(Ingredient ingredient){
@@ -26,17 +26,17 @@ public class IngredientService implements IngredientServiceInterface {
         return ingredient;
     }
 
-    public Ingredient get(long id){
+    public Ingredient get(String id){
         if (ingredients.containsKey(id)){
             return ingredients.get(id);
         } else {
             throw new IngredientNotFoundException(id);
         }
     }
-    public Ingredient update (long id, Ingredient ingredient){
+    public Ingredient update (String id, Ingredient ingredient){
         Ingredient serviceIngredient = ingredients.get(id);
         if (serviceIngredient == null){
-            throw new IngredientNotFoundException(id);
+            throw new IngredientNotFoundException("Ингредиент с id =" + id + " %d не найден!");
         }
         return serviceIngredient;
     }
@@ -52,7 +52,7 @@ public class IngredientService implements IngredientServiceInterface {
     private void saveToFile(){
         try {
             String json = new ObjectMapper().writeValueAsString(ingredients);
-            filesService.saveToFile(json);
+            fileServiceIngredient.saveToFile(json);
         } catch (JsonProcessingException e) {
             throw new RuntimeException(e);
         }
@@ -63,7 +63,7 @@ public class IngredientService implements IngredientServiceInterface {
         readFromm();
     }
     private void readFromm(){
-        String json = filesService.readFromFile();
+        String json = fileServiceIngredient.readFromFile();
         try {
             new ObjectMapper().readValue(json, new TypeReference<TreeMap<Ingredient, Recipe>>() {
             });

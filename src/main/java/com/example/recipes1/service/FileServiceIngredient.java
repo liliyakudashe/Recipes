@@ -1,7 +1,7 @@
 package com.example.recipes1.service;
-
 import org.springframework.beans.factory.annotation.Value;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -24,6 +24,11 @@ public class FileServiceIngredient implements FileServiceInterfaceIngredient{
         } catch (IOException e) {
             return false;
         }
+    }
+
+    @Override
+    public File getDataFile(){
+        return new File(dataFilePath + "/" + dataFileName);
     }
 
     @Override

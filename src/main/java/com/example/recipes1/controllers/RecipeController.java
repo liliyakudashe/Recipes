@@ -27,7 +27,7 @@ public class RecipeController {
     @Operation(summary = "Поиск рецепта",description = "Нужно искать рецепт по ID")
     @ApiResponses(value = {@ApiResponse(responseCode = "200",description = "Рецепт найден", content = {@Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = Recipe.class)))})})
     @GetMapping("/{id}")
-    public Recipe getRecipe(@PathVariable("id") long id){
+    public Recipe getRecipe(@PathVariable("id") String id){
         return recipeService.get(id);
     }
 
@@ -50,12 +50,12 @@ public class RecipeController {
     }
 
     @PatchMapping("/{id}")
-    public Recipe updateRecipe(@PathVariable("id") long id, @RequestBody Recipe recipe){
+    public Recipe updateRecipe(@PathVariable("id") String id, @RequestBody Recipe recipe){
         return this.recipeService.update(id, recipe);
     }
 
     @DeleteMapping("/{id}")
-    public Recipe removeRecipe(@PathVariable("id") long id){
+    public Recipe removeRecipe(@PathVariable("id") String id){
         return this.recipeService.remove(id);
     }
 

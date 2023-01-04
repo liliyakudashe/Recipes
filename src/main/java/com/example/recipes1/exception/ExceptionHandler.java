@@ -8,11 +8,11 @@ public class ExceptionHandler {
 
 
     public ResponseEntity<String> handRecipeNotFoundException(RecipeNotFoundException e){
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(String.format("Рецепт с id = %d ненайден!", e.getId()));
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(String.format("Рецепт с id = %d ненайден!", e.getMessage()));
     }
 
     public ResponseEntity<String> handIngredientNotFoundException(IngredientNotFoundException e){
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(String.format("Ингредиент с id = %d ненайден!", e.getId()));
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(String.format("Ингредиент с id = %d ненайден!", e.getMessage()));
     }
 
 }

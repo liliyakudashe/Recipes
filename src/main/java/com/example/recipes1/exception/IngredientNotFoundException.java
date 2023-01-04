@@ -2,13 +2,14 @@ package com.example.recipes1.exception;
 
 public class IngredientNotFoundException extends RuntimeException{
 
-    private final long id;
+   private String id;
 
-    public IngredientNotFoundException(long id) {
-        this.id = id;
+    public IngredientNotFoundException(String message) {
+        super(message);
     }
 
-    public long getId(){
+
+    public String getId(){
         return id;
     }
 }

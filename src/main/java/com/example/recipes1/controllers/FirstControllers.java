@@ -3,7 +3,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 
-public class FirstControiiers {
+public class FirstControllers {
 
     @GetMapping
     public String theApplicationIsRunning() {

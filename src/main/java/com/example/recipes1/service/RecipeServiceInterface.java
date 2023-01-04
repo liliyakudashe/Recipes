@@ -8,11 +8,11 @@ public interface RecipeServiceInterface {
 
    Recipe add(Recipe recipe);
 
-    Recipe get(long id);
+    Recipe get(String id);
 
-    Recipe update (long id, Recipe recipe);
+    Recipe update (String id, Recipe recipe);
 
-    Recipe remove(long id);
+    Recipe remove(String id);
 
     List<Recipe> getAll();
 

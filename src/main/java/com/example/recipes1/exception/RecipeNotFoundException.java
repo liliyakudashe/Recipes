@@ -2,13 +2,13 @@ package com.example.recipes1.exception;
 
 public class RecipeNotFoundException extends RuntimeException{
 
-    private final long id;
+    private String id;
 
-    public RecipeNotFoundException(long id) {
-        this.id = id;
+    public RecipeNotFoundException(String message) {
+        super(message);
     }
 
-    public long getId() {
+    public String getId() {
         return id;
     }
 }

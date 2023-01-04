@@ -2,6 +2,8 @@ package com.example.recipes1.service;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -24,6 +26,12 @@ public class FilesServiceRecipe implements FileServiceInterfaceRecipe {
             return false;
         }
     }
+
+    @Override
+    public File getDataFile(){
+        return new File(dataFilePath + "/" + dataFileName);
+    }
+
 
     public String readFromFile(){
         try {

@@ -28,7 +28,7 @@ public class RecipeService implements RecipeServiceInterface {
         return recipe;
     }
 
-    public Recipe get(long id){
+    public Recipe get(String id){
         if (recipes.containsKey(id)){
             return recipes.get(id);
         } else {
@@ -36,17 +36,17 @@ public class RecipeService implements RecipeServiceInterface {
         }
     }
 
-    public Recipe update (long id, Recipe recipe){
+    public Recipe update (String id, Recipe recipe){
         Recipe serviceRecipe = recipes.get(id);
         if (serviceRecipe == null){
-            throw new RecipeNotFoundException(id);
+            throw new RecipeNotFoundException("Рецепт с id =" + id + " %d не найден!");
         }
         serviceRecipe.setCookingSteps(recipe.getCookingSteps());
         serviceRecipe.setListOfIngredients(recipe.getListOfIngredients());
         return serviceRecipe;
     }
 
-    public Recipe remove(long id){
+    public Recipe remove(String id){
         return recipes.remove(id);
     }
 
