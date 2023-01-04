@@ -11,4 +11,5 @@ public interface FileServiceInterfaceRecipe {
     String readFromFile();
 
 
+    boolean cleanDataFile();
 }

@@ -41,7 +41,8 @@ public class FilesServiceRecipe implements FileServiceInterfaceRecipe {
         }
     }
 
-    private boolean cleanDataFile(){
+    @Override
+    public boolean cleanDataFile(){
         try {
             Files.deleteIfExists(Path.of(dataFilePath, dataFileName));
             Files.createFile(Path.of(dataFilePath, dataFileName));

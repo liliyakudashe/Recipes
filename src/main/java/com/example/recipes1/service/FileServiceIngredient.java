@@ -8,7 +8,7 @@ import java.nio.file.Path;
 
 public class FileServiceIngredient implements FileServiceInterfaceIngredient{
 
-    @Value("${path.to.data.file}")
+    @Value("${path.to.data.file}/")
     private String dataFilePath;
 
     @Value("${name.of.data.file}")
@@ -40,7 +40,8 @@ public class FileServiceIngredient implements FileServiceInterfaceIngredient{
         }
     }
 
-    private boolean cleanDataFile() {
+    @Override
+    public boolean cleanDataFile() {
         try {
             Files.deleteIfExists(Path.of(dataFilePath, dataFileName));
             Files.createFile(Path.of(dataFilePath, dataFileName));

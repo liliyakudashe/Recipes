@@ -9,4 +9,6 @@ public interface FileServiceInterfaceIngredient {
     File getDataFile();
 
     String readFromFile();
+
+    boolean cleanDataFile();
 }
