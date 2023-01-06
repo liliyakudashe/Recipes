@@ -3,7 +3,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 
-public class FirstControllers {
+public class FirstController {
 
     @GetMapping
     public String theApplicationIsRunning() {

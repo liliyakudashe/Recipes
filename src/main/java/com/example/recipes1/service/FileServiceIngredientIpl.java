@@ -1,23 +1,23 @@
 package com.example.recipes1.service;
-
+import com.example.recipes1.exception.IngredientNotFoundException;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Service;
 
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
-@Service
-public class FilesServiceRecipe implements FileServiceInterfaceRecipe {
+public class FileServiceIngredientIpl implements FileServiceIngredient {
 
-    @Value("${path.to.data.file}")
+    @Value("${path.to.data.file}/")
     private String dataFilePath;
 
     @Value("${name.of.data.file}")
     private String dataFileName;
 
-    public boolean saveToFile(String json){
+
+    @Override
+    public boolean saveToFile(String json) {
         try {
             cleanDataFile();
             Files.writeString(Path.of(dataFilePath, dataFileName), json);
@@ -32,17 +32,17 @@ public class FilesServiceRecipe implements FileServiceInterfaceRecipe {
         return new File(dataFilePath + "/" + dataFileName);
     }
 
-
-    public String readFromFile(){
+    @Override
+    public String readFromFile() {
         try {
-           return Files.readString(Path.of(dataFilePath, dataFileName));
+            return Files.readString(Path.of(dataFilePath, dataFileName));
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            throw new IngredientNotFoundException("Такого файла нет " + e);
         }
     }
 
     @Override
-    public boolean cleanDataFile(){
+    public boolean cleanDataFile() {
         try {
             Files.deleteIfExists(Path.of(dataFilePath, dataFileName));
             Files.createFile(Path.of(dataFilePath, dataFileName));

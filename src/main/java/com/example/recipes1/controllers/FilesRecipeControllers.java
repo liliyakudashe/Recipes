@@ -1,6 +1,6 @@
 package com.example.recipes1.controllers;
 
-import com.example.recipes1.service.FileServiceInterfaceRecipe;
+import com.example.recipes1.service.FileServiceRecipe;
 import org.apache.commons.io.IOUtils;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.HttpHeaders;
@@ -16,9 +16,9 @@ import java.io.*;
 @RequestMapping("/files")
 public class FilesRecipeControllers {
 
-    private final FileServiceInterfaceRecipe fileServiceInterfaceRecipe;
+    private final FileServiceRecipe fileServiceInterfaceRecipe;
 
-    public FilesRecipeControllers(FileServiceInterfaceRecipe fileServiceInterfaceRecipe) {
+    public FilesRecipeControllers(FileServiceRecipe fileServiceInterfaceRecipe) {
         this.fileServiceInterfaceRecipe = fileServiceInterfaceRecipe;
     }
     @GetMapping(value = "/export")

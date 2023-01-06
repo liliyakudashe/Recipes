@@ -1,5 +1,5 @@
 package com.example.recipes1.controllers;
-import com.example.recipes1.service.FileServiceInterfaceIngredient;
+import com.example.recipes1.service.FileServiceIngredient;
 import org.apache.commons.io.IOUtils;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -18,9 +18,9 @@ import java.io.IOException;
 @RestController
 @RequestMapping("/files/ingredient")
 public class FilesIngredientControllers {
-    private final FileServiceInterfaceIngredient fileServiceInterfaceIngredient;
+    private final FileServiceIngredient fileServiceInterfaceIngredient;
 
-    public FilesIngredientControllers(FileServiceInterfaceIngredient fileServiceInterfaceIngredient) {
+    public FilesIngredientControllers(FileServiceIngredient fileServiceInterfaceIngredient) {
         this.fileServiceInterfaceIngredient = fileServiceInterfaceIngredient;
     }
 

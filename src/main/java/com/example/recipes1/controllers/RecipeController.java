@@ -1,6 +1,6 @@
 package com.example.recipes1.controllers;
 import com.example.recipes1.model.Recipe;
-import com.example.recipes1.service.RecipeService;
+import com.example.recipes1.service.RecipeServiceIpl;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.ArraySchema;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -18,9 +18,9 @@ import java.util.List;
 @RequestMapping("/recipe")
 @Tag(name = "Рецепты", description = "CRUD и другие эндпоинты")
 public class RecipeController {
-    private final RecipeService recipeService;
+    private final RecipeServiceIpl recipeService;
 
-    public RecipeController(RecipeService recipeService){
+    public RecipeController(RecipeServiceIpl recipeService){
         this.recipeService = recipeService;
     }
 

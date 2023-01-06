@@ -1,6 +1,6 @@
 package com.example.recipes1.controllers;
 import com.example.recipes1.model.Ingredient;
-import com.example.recipes1.service.IngredientService;
+import com.example.recipes1.service.IngredientServiceIpl;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.ArraySchema;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -20,9 +20,9 @@ import java.util.List;
 @Tag(name = "Ингредиенты", description = "CRUD и другие эндпоинты")
 public class IngredientController {
 
-    public final IngredientService ingredientService;
+    public final IngredientServiceIpl ingredientService;
 
-    public IngredientController(IngredientService ingredientService) {
+    public IngredientController(IngredientServiceIpl ingredientService) {
         this.ingredientService = ingredientService;
     }
 

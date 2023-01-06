@@ -2,7 +2,7 @@ package com.example.recipes1.service;
 
 import java.io.File;
 
-public interface FileServiceInterfaceRecipe {
+public interface FileServiceRecipe {
 
     boolean saveToFile(String json);
 
