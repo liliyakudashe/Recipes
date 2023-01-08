@@ -30,7 +30,7 @@ public class FilesRecipeControllers {
             return ResponseEntity.ok()
                     .contentType(MediaType.APPLICATION_JSON)
                     .contentLength(file.length())
-                    .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename = \"Recipe.json\"")
+                    .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename = \"Ingredient.json\"")
                     .body(resource);
         } else {
             return ResponseEntity.noContent().build();
